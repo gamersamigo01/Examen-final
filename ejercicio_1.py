@@ -1,21 +1,21 @@
 def menu():
-print("========== MENÚ PRINCIPAL ==========")
-print("1. Unidades por tipo de arreglo")
-print("2. Búsqueda de arreglos por rango de precio")
-print("3. Actualizar precio de arreglo")
-print("4. Agregar arreglo")
-print("5. Eliminar arreglo")
-print("6. Salir")
-print("=====================================")
+    print("========== MENÚ PRINCIPAL ==========")
+    print("1. Unidades por tipo de arreglo")
+    print("2. Búsqueda de arreglos por rango de precio")
+    print("3. Actualizar precio de arreglo")
+    print("4. Agregar arreglo")
+    print("5. Eliminar arreglo")
+    print("6. Salir")
+    print("=====================================")
 
 def leer_opcion():
     while True:
         try:
             opt = int(input("Ingrese su opcion: "))
             if 1 <= opt <= 6:
-            return opt
+                return opt
             else:
-            print("Error, tiene que estar dentro de los parametros")
+                print("Error, tiene que estar dentro de los parametros")
         except ValueError:
             print("Error, debe ser un numero entero")
 def validar_codigo(valor):
@@ -48,12 +48,12 @@ def unidades_tipo(arreglo_f,bodega):
         return []
     tipo_arreglo = input("Ingrese el tipo de arreglo a consultar: ").lower().strip()
     total = 0
-        for arreglo in arreglo_f:
-            if tipo_arreglo in arreglo["tipo"].lower():
-                for in_bodega in bodega:
-                    if arreglo["codigo"] == in_bodega["codigo"]:
-                        bodega["unidades"] += total
-                print(total)
+    for arreglo in arreglo_f:
+        if tipo_arreglo in arreglo["tipo"].lower():
+            for in_bodega in bodega:
+                if arreglo["codigo"] == in_bodega["codigo"]:
+                    bodega["unidades"] += total
+            print(total)
 def busqueda_precio(bodega):
     try:
         minimo = int(input("Ingrese el precio minimo de su rango: "))
@@ -64,12 +64,12 @@ def busqueda_precio(bodega):
         precios = []
         for i in bodega:
             if minimo >= i["precio"] <= maximo and i["unidades"] != 0:
-            nuevo_precios = {
-            "nombre": i["nombre"],
-            "codigo": i["codigo"]
-            }
-            precios.append(nuevo_precios)
-            print(precios)
+                nuevo_precios = {
+                "nombre": i["nombre"],
+                "codigo": i["codigo"]
+                }
+                precios.append(nuevo_precios)
+                print(precios)
 def buscar_codigo(arreglo_f,bodega):
     if not arreglo_f and bodega:
         print("Error, aun no agrega ningun arreglo")
@@ -78,10 +78,10 @@ def buscar_codigo(arreglo_f,bodega):
     indices_encontrados = []
     for posicion,i in enumerate(bodega):
         if busqueda in i["codigo"]:
-        indices_encontrados.append(posicion)
-        return indices_encontrados,busqueda
+            indices_encontrados.append(posicion)
+            return indices_encontrados,busqueda
         else:
-        return False
+            return False
 def actualizar_precio(arreglo_f,bodega):
     esta_codigo = buscar_codigo(arreglo_f,bodega)
     if esta_codigo:
